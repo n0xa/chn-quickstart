@@ -1,5 +1,4 @@
 ---
-version: '3.8'
 services:
   mongodb:
     image: mongo:8.0
@@ -14,31 +13,37 @@ services:
     restart: always
 
   hpfeeds3:
-    image: ax0n/hpfeeds3:2.0
-    links:
-      - mongodb:mongodb
+    build:
+      context: ../hpfeeds3
+    depends_on:
+      - mongodb
     ports:
       - "10000:10000"
     restart: always
 
   mnemosyne:
-    image: ax0n/mnemosyne:2.0
+    build:
+      context: ..
+      dockerfile: mnemosyne/Dockerfile
     env_file:
       - ./config/sysconfig/mnemosyne.env
-    links:
-      - mongodb:mongodb
-      - hpfeeds3:hpfeeds3
+    depends_on:
+      - mongodb
+      - hpfeeds3
     restart: always
 
   chnserver:
-    image: ax0n/chn-server:2.0
+    build:
+      context: ../CHN-Server
     volumes:
       - ./storage/chnserver/sqlite:/opt/sqlite:z
       - ./certs:/etc/letsencrypt:z
     env_file:
       - ./config/sysconfig/chnserver.env
-    links:
-      - mongodb:mongodb
+    depends_on:
+      - mongodb
+      - redis
+      - hpfeeds3
     ports:
       - "80:80"
       - "443:443"
