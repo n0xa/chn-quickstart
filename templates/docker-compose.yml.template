@@ -14,7 +14,7 @@ services:
     restart: always
 
   hpfeeds3:
-    image: ax0n/hpfeeds3:2.0
+    image: ax0n/hpfeeds3:2.1.0
     links:
       - mongodb:mongodb
     ports:
@@ -22,7 +22,7 @@ services:
     restart: always
 
   mnemosyne:
-    image: ax0n/mnemosyne:2.0
+    image: ax0n/mnemosyne:2.1.0
     env_file:
       - ./config/sysconfig/mnemosyne.env
     links:
@@ -31,7 +31,7 @@ services:
     restart: always
 
   chnserver:
-    image: ax0n/chn-server:2.0
+    image: ax0n/chn-server:2.1.0
     volumes:
       - ./storage/chnserver/sqlite:/opt/sqlite:z
       - ./certs:/etc/letsencrypt:z
