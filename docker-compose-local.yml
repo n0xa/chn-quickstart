@@ -1,0 +1,50 @@
+---
+services:
+  mongodb:
+    image: mongo:8.0
+    volumes:
+      - ./storage/mongodb:/data/db:z
+    restart: always
+
+  redis:
+    image: redis:7.4-alpine
+    volumes:
+      - ./storage/redis:/data:z
+    restart: always
+
+  hpfeeds3:
+    build:
+      context: ../hpfeeds3
+    depends_on:
+      - mongodb
+    ports:
+      - "10000:10000"
+    restart: always
+
+  mnemosyne:
+    build:
+      context: ..
+      dockerfile: mnemosyne/Dockerfile
+    env_file:
+      - ./config/sysconfig/mnemosyne.env
+    depends_on:
+      - mongodb
+      - hpfeeds3
+    restart: always
+
+  chnserver:
+    build:
+      context: ../CHN-Server
+    volumes:
+      - ./storage/chnserver/sqlite:/opt/sqlite:z
+      - ./certs:/etc/letsencrypt:z
+    env_file:
+      - ./config/sysconfig/chnserver.env
+    depends_on:
+      - mongodb
+      - redis
+      - hpfeeds3
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: always
