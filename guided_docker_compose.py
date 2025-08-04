@@ -313,7 +313,7 @@ def main():
     if chn_sysconfig_exists:
         answer = input(make_color("BOLD",
                                   "Previous chn-server.env file detected. Do you wish to reconfigure? [y/N]: "))
-        reconfig = answer.lower() == ("y" or "yes")
+        reconfig = answer.lower() in ("y", "yes")
 
     if reconfig or not chn_sysconfig_exists:
         configure_chn()
@@ -331,7 +331,7 @@ def main():
     if cif_sysconfig_exists:
         answer = input(make_color("BOLD",
                                   "Previous hpfeeds-cif.env file detected. Do you wish to reconfigure? [y/N]: "))
-        reconfig = answer.lower() == ("y" or "yes")
+        reconfig = answer.lower() in ("y", "yes")
     else:
         answer = input(make_color("BOLD",
                                   "Do you wish to enable logging to a remote CIFv3 server? [y/N]: "))
@@ -353,7 +353,7 @@ def main():
     if logger_sysconfig_exists:
         answer = input(make_color("BOLD",
                                   "Previous hpfeeds-logger.env file detected. Do you wish to reconfigure? [y/N]: "))
-        reconfig = answer.lower() == ("y" or "yes")
+        reconfig = answer.lower() in ("y", "yes")
     else:
         answer = input(make_color("BOLD",
                                   "Do you wish to enable logging to a local file? [y/N]: "))
@@ -375,7 +375,7 @@ def main():
     if feeds_exists:
         answer = input(make_color("BOLD",
                                   "Previous chn-intel-feeds.env file detected. Do you wish to reconfigure? [y/N]: "))
-        reconfig = answer.lower() == ("y" or "yes")
+        reconfig = answer.lower() in ("y", "yes")
     else:
         answer = input(make_color("BOLD",
                                   "Do you wish to enable intelligence feeds from a remote CIF instance? [y/N]: "))

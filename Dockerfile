@@ -1,6 +1,6 @@
 FROM ubuntu:24.04
 
-LABEL maintainer="Team Stingar <team-stingar@duke.edu>"
+LABEL maintainer="n0xa"
 LABEL name="chn-config"
 LABEL version="1.9.1"
 LABEL release="1"

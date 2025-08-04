@@ -17,18 +17,18 @@ services:
     volumes:
       - ./storage/redis:/var/lib/redis:z
   hpfeeds:
-    image: stingar/hpfeeds3:2.0
+    image: ax0n/hpfeeds3:2.0
     links:
       - mongodb:mongodb
     ports:
       - "10000:10000"
   mnemosyne:
-    image: stingar/mnemosyne:2.0
+    image: ax0n/mnemosyne:2.0
     links:
       - mongodb:mongodb
       - hpfeeds:hpfeeds
   chnserver:
-    image: stingar/chn-server:2.0
+    image: ax0n/chn-server:2.0
     depends_on:
       - configure
     volumes:
