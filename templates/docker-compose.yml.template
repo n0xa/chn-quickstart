@@ -1,20 +1,20 @@
 ---
-version: '3'
+version: '3.8'
 services:
   mongodb:
-    image: mongo:3.4.24-xenial
+    image: mongo:8.0
     volumes:
       - ./storage/mongodb:/data/db:z
     restart: always
 
   redis:
-    image: redis:alpine
+    image: redis:7.4-alpine
     volumes:
       - ./storage/redis:/data:z
     restart: always
 
   hpfeeds3:
-    image: stingar/hpfeeds3:1.9.1
+    image: stingar/hpfeeds3:2.0
     links:
       - mongodb:mongodb
     ports:
@@ -22,7 +22,7 @@ services:
     restart: always
 
   mnemosyne:
-    image: stingar/mnemosyne:1.9.1
+    image: stingar/mnemosyne:2.0
     env_file:
       - ./config/sysconfig/mnemosyne.env
     links:
@@ -31,7 +31,7 @@ services:
     restart: always
 
   chnserver:
-    image: stingar/chn-server:1.9.1
+    image: stingar/chn-server:2.0
     volumes:
       - ./storage/chnserver/sqlite:/opt/sqlite:z
       - ./certs:/etc/letsencrypt:z

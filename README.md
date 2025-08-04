@@ -10,13 +10,13 @@ Install procedure:
 * Install docker & docker-compose
 * Ensure python3 & pip3 are available
 * `python3 -m pip install -r requirements.txt`
-* Clone the [latest release](https://github.com/CommunityHoneyNetwork/chn-quickstart/releases/latest) repository and `cd` into it
+* Clone the [latest release](https://github.com/n0xa/chn-quickstart/releases/latest) repository and `cd` into it
 * `./guided_docker_compose.py`
 
 Presuming an AWS Ubuntu instance:
 
 * `sudo apt update && sudo apt upgrade -y && sudo apt install -y docker-compose jq python3 python3-pip && sudo python3 -m pip install -r requirements.txt && sudo usermod -aG docker ubuntu && sudo systemctl enable docker && sudo reboot`
-* `sudo git clone -b v1.9 https://github.com/CommunityHoneyNetwork/chn-quickstart.git /opt/chnserver && sudo chown -R
+* `sudo git clone -b v2.0 https://github.com/n0xa/chn-quickstart.git /opt/chnserver && sudo chown -R
  ubuntu:docker /opt/chnserver`
 * Run `cd /opt/chnserver && ./guided_docker_compose.py`
 * Run `docker-compose up`

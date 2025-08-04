@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:24.04
 
 LABEL maintainer="Team Stingar <team-stingar@duke.edu>"
 LABEL name="chn-config"
