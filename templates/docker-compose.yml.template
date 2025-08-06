@@ -22,7 +22,7 @@ services:
     restart: always
 
   mnemosyne:
-    image: ax0n/mnemosyne:2.1.0
+    image: ax0n/mnemosyne:2.1.1
     env_file:
       - ./config/sysconfig/mnemosyne.env
     links:
