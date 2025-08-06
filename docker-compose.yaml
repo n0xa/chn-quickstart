@@ -31,7 +31,7 @@ services:
     restart: always
 
   chnserver:
-    image: ax0n/chn-server:2.1.0
+    image: ax0n/chn-server:2.1.1
     volumes:
       - ./storage/chnserver/sqlite:/opt/sqlite:z
       - ./certs:/etc/letsencrypt:z
