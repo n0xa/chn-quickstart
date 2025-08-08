@@ -12,6 +12,8 @@ Install procedure:
 * `python3 -m pip install -r requirements.txt`
 * Clone the [latest release](https://github.com/n0xa/chn-quickstart/releases/latest) repository and `cd` into it
 * `./guided_docker_compose.py`
+* `docker-compose up -d`
+* `./bootstrap.sh` (to provision hpfeeds credentials)
 
 Presuming an AWS Ubuntu instance:
 
@@ -19,4 +21,5 @@ Presuming an AWS Ubuntu instance:
 * `sudo git clone -b v2.0 https://github.com/n0xa/chn-quickstart.git /opt/chnserver && sudo chown -R
  ubuntu:docker /opt/chnserver`
 * Run `cd /opt/chnserver && ./guided_docker_compose.py`
-* Run `docker-compose up`
+* Run `docker-compose up -d`
+* Run `./bootstrap.sh` (to provision hpfeeds credentials)

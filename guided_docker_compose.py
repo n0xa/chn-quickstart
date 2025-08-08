@@ -188,7 +188,10 @@ def configure_mnemosyne():
 
     generate_sysconfig(output_file="config/sysconfig/mnemosyne.env",
                        template_file="templates/mnemosyne.env.template",
-                       retention=retention
+                       retention=retention,
+                       ident=f"mnemosyne-{generate_password(8)}",
+                       secret=generate_password(32),
+                       channels="dionaea.connections,cowrie.sessions,conpot.events,glastopf.events,kippo.sessions"
                        )
 
 

@@ -8,7 +8,7 @@ config/
 __pycache__/
 *.py[cod]
 *$py.class
-
+docker-compose.yml
 # C extensions
 *.so
 
