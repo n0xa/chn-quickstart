@@ -3,6 +3,7 @@ version: '3.8'
 services:
   mongodb:
     image: mongo:8.0
+    command: --quiet
     volumes:
       - ./storage/mongodb:/data/db:z
     restart: always
@@ -14,7 +15,7 @@ services:
     restart: always
 
   hpfeeds3:
-    image: ax0n/hpfeeds3:2.2.0
+    image: ax0n/hpfeeds3:2.2.3
     links:
       - mongodb:mongodb
     ports:
@@ -30,6 +31,17 @@ services:
       - hpfeeds3:hpfeeds3
     restart: always
 
+  seckc-mhn-dashboard-api:
+    image: ax0n/seckc-mhn-dashboard-api:dionaea
+    env_file:
+      - ./config/sysconfig/seckc_mhn_api.env
+    links:
+      - mongodb:mongodb
+      - hpfeeds3:hpfeeds3
+    ports:
+      - "5000:5000"
+    restart: always
+
   chnserver:
     image: ax0n/chn-server:2.2.1
     volumes:
@@ -40,6 +52,5 @@ services:
     links:
       - mongodb:mongodb
     ports:
-      - "80:80"
-      - "443:443"
+      - "127.0.0.1:5001:80"
     restart: always
