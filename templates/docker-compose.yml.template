@@ -15,7 +15,7 @@ services:
     restart: always
 
   hpfeeds3:
-    image: ax0n/hpfeeds3:2.2.3
+    image: ax0n/hpfeeds3:2.2.4
     links:
       - mongodb:mongodb
     ports:
