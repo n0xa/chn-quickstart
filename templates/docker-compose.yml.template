@@ -1,5 +1,3 @@
----
-version: '3.8'
 services:
   mongodb:
     image: mongo:8.0
@@ -15,7 +13,7 @@ services:
     restart: always
 
   hpfeeds3:
-    image: ax0n/hpfeeds3:2.2.4
+    image: ax0n/hpfeeds3:2.2.5
     links:
       - mongodb:mongodb
     ports:
@@ -23,7 +21,7 @@ services:
     restart: always
 
   mnemosyne:
-    image: ax0n/mnemosyne:2.2.3
+    image: ax0n/mnemosyne:2.2.2
     env_file:
       - ./config/sysconfig/mnemosyne.env
     links:
@@ -32,7 +30,7 @@ services:
     restart: always
 
   seckc-mhn-dashboard-api:
-    image: ax0n/seckc-mhn-dashboard-api:2.2.3
+    image: ax0n/seckc-mhn-dashboard-api:2.2.2
     env_file:
       - ./config/sysconfig/seckc_mhn_api.env
     links:
